@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/template/template.xhtml">
+                	
+			<ui:define name="pageTitle">register</ui:define>		
+			<ui:define name="pageContent">
+				<h:outputScript library="primefaces/jquery" name="jquery.js"/>
+				<h:outputScript library="js" name="jquery.maskedinput.js"/>
+				<h2>Customer registration</h2>
+				<hr/>
+				<h:form id="register">
+					<h:panelGrid columns="3">
+						<h:outputText value="Login*" />
+						<h:inputText id="login" value="#{registerBean.customer.login}" validator="#{registerBean.validateLoginUnicity}" required="true" requiredMessage="login is required">
+							<f:ajax event="blur" execute="@this" render="msg_login" />
+						</h:inputText>
+						<h:message id="msg_login" for="login" styleClass="error"/>
+						
+						<h:outputText value="Password*" />
+						<h:inputSecret id="password" value="#{registerBean.customer.password}" validatorMessage="between 6 and 12" required="true" requiredMessage="password is required">
+							<f:validateLength minimum="6" maximum="12" />
+							<f:ajax event="blur" execute="@this" render="msg_password" />
+						</h:inputSecret>
+						<h:message id="msg_password" for="password" styleClass="error"/>
+						
+						<h:outputText value="Email" />
+						<h:inputText id="email" value="#{registerBean.customer.email}" validatorMessage="invalid email!">
+							<f:ajax event="blur" execute="@this" render="msg_email" />
+							<f:validateRegex pattern="^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"/>
+						</h:inputText>
+						<h:message id="msg_email" for="email" styleClass="error"/>
+						
+						<h:outputText value="Date of birth" />
+						<h:inputText id="birthdate" value="#{registerBean.customer.birthDate}" converterMessage="Example: 17/12/2010">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+							<f:ajax event="blur" execute="@this" render="msg_birthdate" />
+						</h:inputText>
+						<h:message id="msg_birthdate" for="birthdate" styleClass="error"/>
+						
+						<h:commandButton immediate="true" action="/welcome?faces-redirect=true" value="cancel" />
+						<h:commandButton action="#{registerBean.doSignUp}" value="sign up" />
+					</h:panelGrid>	
+					
+					<h:outputScript>
+						$("#register\\:birthdate").mask("99/99/9999");
+					</h:outputScript>
+					
+				</h:form>
+			
+			
+			
+			</ui:define>
+</ui:composition>

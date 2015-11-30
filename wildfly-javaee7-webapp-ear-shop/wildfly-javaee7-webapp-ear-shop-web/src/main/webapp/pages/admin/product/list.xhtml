@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+                	
+			
+			<h:form id="master">
+				<p:dataTable    emptyMessage="no products found!"
+								value="#{productBean.products}"
+				                var="prod"
+				                rows="5"
+				                paginator="true"
+				                paginatorPosition="bottom"
+				                selectionMode="single"
+				                selection="#{productBean.product}"
+				                rowKey="#{prod.id}"
+				                filteredValue="#{productBean.filteredProducts}"
+				                widgetVar="prodTabW">
+				                
+				    <p:ajax event="rowSelect" listener="#{productBean.onRowSelect}" update=":details"/>
+				    <p:ajax event="filter" listener="#{productBean.onFilter}" update=":details" />     
+				             
+					<f:facet name="header">
+							<h:outputText value="all products" />
+					</f:facet>
+					
+					<p:column headerText="#" filterBy="#{prod.id}" filterMatchMode="startsWith">			
+						<h:outputText value="#{prod.id}" />
+					</p:column>
+					
+					<p:column headerText="name" filterBy="#{prod.name}" filterMatchMode="startsWith">
+						<h:outputText value="#{prod.name}" />
+					</p:column>
+					
+					<p:column headerText="price" filterBy="#{prod.unitCost}" filterMatchMode="contains">
+						<h:outputText value="#{prod.unitCost}" />
+					</p:column>
+					
+					<p:column headerText="stock" filterBy="#{prod.stock}" filterMatchMode="exact">
+						<h:outputText value="#{prod.stock}" />
+					</p:column>
+					
+					<p:column headerText="category" filterBy="#{prod.category.name}" filterMatchMode="exact" filterOptions="#{productBean.categoriesFilterOptions}">
+						<h:outputText value="#{prod.category.name}" />
+					</p:column>
+					
+					
+					
+				</p:dataTable>
+				<p:commandButton icon="ui-icon-circle-plus" actionListener="#{productBean.doNew}" value="new"  update=":details"/>
+			</h:form>
+</ui:composition>

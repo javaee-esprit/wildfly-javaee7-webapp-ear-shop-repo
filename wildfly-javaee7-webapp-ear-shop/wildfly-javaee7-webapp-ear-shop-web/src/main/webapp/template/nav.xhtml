@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:form rendered="#{authBean.hasRole('Admin')}">
+		<h:panelGrid columns="1">
+			<h:commandLink action="/pages/admin/home?faces-redirect=true" value="HOME" />
+			<h:commandLink action="/pages/admin/category/manage?faces-redirect=true" value="CATEGORIES" />
+			<h:commandLink action="/pages/admin/product/manage?faces-redirect=true" value="PRODUCTS" />
+		</h:panelGrid>
+	</h:form>
+	
+	<h:form rendered="#{authBean.hasRole('Customer')}">
+		<h:panelGrid columns="1">
+			<h:commandLink action="/pages/customer/home?faces-redirect=true" value="HOME" />
+			<h:commandLink action="/pages/customer/shop?faces-redirect=true" value="SHOP" />
+		</h:panelGrid>
+	</h:form>                
+                	
+
+</ui:composition>

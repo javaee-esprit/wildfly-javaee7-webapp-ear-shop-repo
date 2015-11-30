@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+					
+					<h:panelGrid columns="1" >
+						<p:graphicImage  id="product_image" value="#{productImageBean.image}" cache="false" styleClass="editor-picture">
+    							<f:param name="productName" value="#{productBean.product.name}" />
+						</p:graphicImage>
+						<p:commandButton value="change" oncomplete="PF('uploadFileDlgW').show()" styleClass="editor-picture"/>
+					</h:panelGrid>					
+					<p:dialog id="uploadFileDlg" header="upload a picture" widgetVar="uploadFileDlgW" position="top" modal="true" resizable="false" styleClass="upload-dialog">
+							<h:form enctype="multipart/form-data">
+								<p:fileUpload 	fileUploadListener="#{productBean.handleFileUpload}" 
+									  			mode="advanced"
+							 		  			sizeLimit="100000"
+							 		  			update=":details_form:product_image" 
+							 		  			onsuccess="PF('uploadFileDlgW').hide()"
+							 		  			allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+							 	</h:form>	  			
+						 	<p:commandButton value="Done" oncomplete="PF('uploadFileDlgW').hide()" styleClass="right"/> 										
+					</p:dialog>	
+
+                	
+
+</ui:composition>

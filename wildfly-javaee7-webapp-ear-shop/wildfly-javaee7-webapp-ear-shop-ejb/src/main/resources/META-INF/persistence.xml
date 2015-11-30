@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="wildfly-javaee7-webapp-ear-shop-ejb">
+		<jta-data-source>java:/MySqlDS</jta-data-source>
+		<class>persistence.Admin</class>
+		<class>persistence.Category</class>
+		<class>persistence.Customer</class>
+		<class>persistence.Product</class>
+		<class>persistence.Transaction</class>
+		<class>persistence.TransactionPK</class>
+		<class>persistence.User</class>
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+		</properties>
+	</persistence-unit>
+</persistence>

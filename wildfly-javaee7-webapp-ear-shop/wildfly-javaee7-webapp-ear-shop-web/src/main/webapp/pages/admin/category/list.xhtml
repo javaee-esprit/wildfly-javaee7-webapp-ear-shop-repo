@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+                	
+			
+			<h:form id="master">
+				<p:dataTable emptyMessage="no categories found!"
+							 value="#{categoryBean.categories}"
+				             var="cat"
+				             rows="4"		             
+				             paginator="true"
+				             paginatorPosition="bottom"
+				             filteredValue="#{categoryBean.filteredCategories}"
+				             selectionMode="single"
+				             selection="#{categoryBean.category}"
+				             rowKey="#{cat.id}"
+				             widgetVar="catTabW">
+				    
+				    <p:ajax event="rowSelect" listener="#{categoryBean.onRowSelect}" update=":details"/>
+				    <p:ajax event="filter" listener="#{categoryBean.onFilter}" update=":details"/>        
+				             
+					<f:facet name="header">
+							<h:outputText value="all categories" />
+					</f:facet>
+					
+					<p:column headerText="#" filterBy="#{cat.id}" filterMatchMode="startsWith">									
+						<h:outputText value="#{cat.id}" />
+					</p:column>
+					
+					<p:column headerText="name" filterBy="#{cat.name}" filterMatchMode="contains">					
+						<h:outputText value="#{cat.name}" />
+					</p:column>
+					
+					
+					
+					
+				</p:dataTable>
+				<p:commandButton icon="ui-icon-circle-plus" actionListener="#{categoryBean.doNew}" value="new" update=":details"/>
+			</h:form>
+</ui:composition>

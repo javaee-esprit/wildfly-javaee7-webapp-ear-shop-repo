@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+                	
+					
+			<p:panel id="details" header="category details" visible="#{categoryBean.formDisplayed}">
+				<h:form rendered="#{categoryBean.formDisplayed}">
+					<h:panelGrid columns="2">
+						<h:outputText value="name" />
+						<p:inputText value="#{categoryBean.category.name}" />
+						<p:commandButton immediate="true" actionListener="#{categoryBean.doCancel}" value="cancel" update=":details"/>
+						<h:panelGrid columns="2">
+							<p:commandButton actionListener="#{categoryBean.doDelete}" value="delete" update=":master :details" oncomplete="PF('catTabW').filter();"/>
+							<p:commandButton actionListener="#{categoryBean.doSave}" value="save" update=":master :details" oncomplete="PF('catTabW').filter();" />
+						</h:panelGrid>
+					</h:panelGrid>
+				</h:form>
+			</p:panel>
+</ui:composition>

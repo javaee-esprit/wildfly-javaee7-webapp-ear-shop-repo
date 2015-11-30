@@ -1,0 +1,12 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/template/template.xhtml">
+                	
+			<ui:define name="pageTitle">manage categories</ui:define>		
+			<ui:define name="pageContent">
+				<ui:include src="/pages/admin/category/list.xhtml" />
+				<ui:include src="/pages/admin/category/form.xhtml" />
+			</ui:define>
+</ui:composition>

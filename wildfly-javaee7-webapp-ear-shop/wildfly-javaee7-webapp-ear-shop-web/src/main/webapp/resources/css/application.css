@@ -1,0 +1,145 @@
+body {
+	margin: 6px;
+	padding: 0px;
+	text-align: center;
+	font:81.25% arial, helvetica, sans-serif;
+}
+
+#container {
+	width: 820px;
+	height: 683px;
+	margin: auto auto;
+	text-align: left;
+	padding: 6px;
+	border: 1px solid #333;
+	background-color: #eee;
+	display: block;
+}
+
+#header {
+	width: auto;
+	display: block;
+	height: 66px;
+	background: url("#{resource['img:logo.png']}") no-repeat;
+	border: 1px solid #333;
+}
+
+#horizon {
+	width: auto;
+	display: block;
+	height: 38px;
+	border: 1px solid #333;
+}
+
+#topbar {
+	float: left;
+	width: 490px;
+	height: 24px;
+	margin-top: 6px;
+	margin-right: 6px;
+	margin-left: 6px;
+/*  border: 1px solid #333; */
+}
+
+#identity{
+	float: right;
+	width: 300px;
+	height: 24px;
+	margin-top: 6px;
+	margin-right: 6px;
+	margin-left: 6px;
+/*  border: 1px solid #333; */
+	text-align: right;
+}
+
+#identity form>table {
+	float: right;
+}
+
+#main {
+	width: auto;
+	height: 500px;
+	display: block;
+	border: 1px solid #333;
+}
+
+#navigation {
+	float: left;
+	width: 164px;
+	height: 472px;
+	padding: 6px;
+	margin-right: 6px;
+	margin-left: 6px;
+	margin-top: 6px;
+	border: 1px solid #333;
+}
+
+#content{
+	float: right;
+	width: 602px;
+	height: 472px;
+	padding: 6px;
+	margin-top: 6px;
+	margin-right: 6px;
+	margin-left: 6px;
+	border: 1px solid #333;
+}
+
+#footer {
+	width: auto;
+	display: block;
+	height: 24px;
+	border: 1px solid #333;
+}
+
+.error {
+	color: red;
+	font-weight: bold;
+}
+
+.info {
+	color: green;
+	font-weight: bold;
+}
+
+.ui-widget, .ui-widget .ui-widget {
+font-size: 12px !important;
+}
+
+.catalog-picture{
+	width:75px;
+}
+.editor-picture{
+	width:112px;
+}
+
+.catalog-panel{
+	width:185px;
+	hight:150px;
+}
+.catalog-price{
+	
+	display: inline;
+  	padding: .2em .6em .3em;
+  	font-size: 12px;
+  	font-weight: bold;
+  	line-height: 1;
+  	color: #fff;
+  	text-align: center;
+  	white-space: nowrap;
+  	vertical-align: baseline;
+  	border-radius: .25em;
+  	background-color: #428bca;
+}
+
+.upload-dialog{
+	width:560px;
+}
+.right{
+	float:right;
+}
+
+.product-form-input{
+	width:360px;
+}
+

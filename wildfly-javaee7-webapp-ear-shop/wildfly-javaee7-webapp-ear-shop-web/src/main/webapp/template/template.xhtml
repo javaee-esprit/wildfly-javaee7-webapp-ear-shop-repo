@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title><ui:insert name="pageTitle" /></title>
+		<h:outputStylesheet library="css" name="application.css" />
+		<link rel="shortcut icon" type="image/x-con" href="#{request.contextPath}/resources/img/favicon.ico" />
+	</h:head>
+	<h:body>
+			<div id="container">
+				<div id="header">
+					
+				</div>
+				<hr></hr>
+				<div id="horizon">
+					<div id="topbar">
+						<ui:include src="/template/topbar.xhtml" />
+					</div>
+					<div id="identity">
+						<ui:include src="/template/identity.xhtml" />
+					</div>
+				</div>	
+				<hr></hr>				
+				<div id="main">
+					<div id="navigation">
+						<ui:include src="/template/nav.xhtml" />
+					</div>
+					<div id="content">
+						<ui:insert name="pageContent" />
+					</div>
+				</div>
+				<hr></hr>
+	            <div id="footer">
+	            	...FOOTER...
+	            </div>
+	        </div>	
+	</h:body>
+</html>

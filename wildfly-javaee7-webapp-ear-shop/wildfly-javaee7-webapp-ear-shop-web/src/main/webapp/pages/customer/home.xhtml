@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/template.xhtml">
+                	
+			<ui:define name="pageTitle">customer home</ui:define>		
+			<ui:define name="pageContent">
+			
+			<p:dataTable    emptyMessage="no products found!"
+								value="#{transactionBean.products}"
+				                var="prod"
+				                rows="5"
+				                paginator="true"
+				                paginatorPosition="bottom"
+				                rowKey="#{prod.id}">
+				             
+					<f:facet name="header">
+							<h:outputText value="You already bought" />
+					</f:facet>
+					
+					<p:column headerText="name" filterBy="#{prod.name}" filterMatchMode="startsWith">
+						<h:outputText value="#{prod.name}" />
+					</p:column>
+					
+				</p:dataTable>
+				<br/>
+				<p:dataTable    emptyMessage="no previous purchases"
+								value="#{transactionBean.purchases}"
+				                var="p"
+				                rows="5"
+				                paginator="true"
+				                paginatorPosition="bottom">     
+				             
+					<f:facet name="header">
+							<h:outputText value="Previous purchases" />
+					</f:facet>
+					
+					<p:column headerText="date" filterBy="#{p.get('date')}" filterMatchMode="startsWith">			
+						<h:outputText value="#{p.get('date')}" />
+					</p:column>
+					
+					<p:column headerText="product" filterBy="#{p.get('productName')}" filterMatchMode="startsWith">			
+						<h:outputText value="#{p.get('productName')}" />
+					</p:column>
+					
+					<p:column headerText="price" filterBy="#{p.get('productUnitCost')}" filterMatchMode="startsWith">			
+						<h:outputText value="#{p.get('productUnitCost')}" />
+					</p:column>
+					
+					<p:column headerText="quantity" filterBy="#{p.get('quantity')}" filterMatchMode="startsWith">			
+						<h:outputText value="#{p.get('quantity')}" />
+					</p:column>
+					
+				</p:dataTable>
+				
+	  		</ui:define>
+</ui:composition>

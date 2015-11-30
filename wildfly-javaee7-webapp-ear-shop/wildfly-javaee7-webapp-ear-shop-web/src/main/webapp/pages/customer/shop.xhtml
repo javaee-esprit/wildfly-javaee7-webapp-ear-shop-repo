@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/template.xhtml">
+                	
+			<ui:define name="pageTitle">shop</ui:define>		
+			<ui:define name="pageContent">
+				<p:dataGrid value="#{shopBean.products}"
+							var="prod"
+							columns="3"
+							rows="9"
+							paginator="true" 
+							paginatorPosition="bottom"							
+							paginatorAlwaysVisible="true">
+							
+					<f:facet name="header">
+						<h:outputText value="OUR CATALOG" />
+					</f:facet>		
+							
+					<p:panel header="#{prod.name}" styleClass="catalog-panel">
+						<h:panelGrid columns="2">
+							<p:graphicImage value="#{productImageBean.image}" cache="false" styleClass="catalog-picture">
+    							<f:param name="productName" value="#{prod.name}" />
+							</p:graphicImage>
+							<h:outputText value="#{prod.unitCost}" converter="pc" styleClass="catalog-price"/>
+						</h:panelGrid>
+					</p:panel>
+				</p:dataGrid>
+	  		</ui:define>
+</ui:composition>

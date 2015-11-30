@@ -1,0 +1,15 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/template/template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+                	
+			<ui:define name="pageTitle">admin home</ui:define>		
+			<ui:define name="pageContent">
+			<h:form>
+				<p:poll interval="3" update="sales " />
+				<p:chart id="sales" type="pie" model="#{chartsBean.pieModel}"/>
+			</h:form>	
+	  		</ui:define>
+</ui:composition>
